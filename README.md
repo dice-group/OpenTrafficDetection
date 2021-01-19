@@ -17,16 +17,16 @@ A Nvidia account is required.
 4 - Start the Jetson board on Recovery mode. The board will light it up, but should not display video.
 It should be pressed the two bottons as displayed on the image below:
 
-<img src="https://gitlab.opendata-paderborn.de/central/traffic_sensor/development/-/raw/master/readme_files/start_board.jpg" /> 
+<img src="https://github.com/dice-group/VEP/raw/master/readme_files/start_board.jpg" /> 
 
 5 - Plug the microusb cable on the board and connect into the Host PC. Start the SDK Manager. If everything was done right, it should
 detect the board as described by the image below:
 
-<img src="https://gitlab.opendata-paderborn.de/central/traffic_sensor/development/-/raw/master/readme_files/step01.png" /> 
+<img src="https://github.com/dice-group/VEP/raw/master/readme_files/step01.png" /> 
 
 6 - On Step 2, select all the components:
 
-<img src="https://gitlab.opendata-paderborn.de/central/traffic_sensor/development/-/raw/master/readme_files/step02.png" /> 
+<img src="https://github.com/dice-group/VEP/raw/master/readme_files/step02.png" /> 
 
 7 - Proceed and wait for the installation to be finished. The board will boot up after the OS installation to configure the user
 DO NOT CLOSE THE SDK MANAGER
