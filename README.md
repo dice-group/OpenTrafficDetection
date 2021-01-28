@@ -1,42 +1,5 @@
 ## VEP Instructions
 
-#  Installing the environment on Jetson TX2 automatically.
-
-To install all the Jetson dependencies, you gonna need a Host PC with ubuntu 18.04 or higher installed.
-All the setup (Cuda, Cudnn and drivers) will be done automatically by the SDK manager.
-You can download on the following link:
-https://developer.nvidia.com/nvidia-sdk-manager
-A Nvidia account is required. 
-
-1 - Download the SDK Manager on the Host PC.
-
-2 - If your ubuntu version is 20.04, open the file /etc/os-release and change the VERSION_ID to 18.04
-
-3 - Make sure to start the Jetson on the recovery mode
-
-4 - Start the Jetson board on Recovery mode. The board will light it up, but should not display video.
-It should be pressed the two bottons as displayed on the image below:
-
-<img src="https://github.com/dice-group/VEP/raw/master/readme_files/start_board.jpg" /> 
-
-5 - Plug the microusb cable on the board and connect into the Host PC. Start the SDK Manager. If everything was done right, it should
-detect the board as described by the image below:
-
-<img src="https://github.com/dice-group/VEP/raw/master/readme_files/step01.png" /> 
-
-6 - On Step 2, select all the components:
-
-<img src="https://github.com/dice-group/VEP/raw/master/readme_files/step02.png" /> 
-
-7 - Proceed and wait for the installation to be finished. The board will boot up after the OS installation to configure the user
-DO NOT CLOSE THE SDK MANAGER
-The SDK manager will require a valid user and password from the OS installed on the board in order to install Cuda, Cudnn and additional drivers.
-
-8 - After everything is finished, execute the **install_opencv_jetson_tx2.sh** to build opencv with Cuda and Cudnn for the TX2 board. 
-
-9 - Install the camera drivers following the steps on https://github.com/alliedvision/linux_nvidia_jetson
-
-
 # Traffic Sensor
 Implementation in Python
 
