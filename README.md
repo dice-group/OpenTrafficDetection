@@ -10,9 +10,6 @@ pip3 install python-magic
 pip3 install numpy
 ```
 
-Now it is time to check your installation in Python 3.
-
-<img src="https://qengineering.eu/images/OpenCV_4_4_0.webp" alt="pic1" border="0">
 
 # Running the Application
 
