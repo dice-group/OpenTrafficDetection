@@ -1,6 +1,6 @@
 ## VEP Instructions
 
-# Traffic Sensor
+# Traffic Detection
 Implementation in Python
 
 Before run, install the dependencies with
@@ -17,29 +17,30 @@ To run, clone the repository and access the python folder
 
 
 ```
-git clone https://gitlab.opendata-paderborn.de/central/traffic_sensor/development
+git clone https://github.com/dice-group/VEP
 cd python
 ```
 
-Now, you need to download the weights and the configuration for the darknet neural network.
+Now, you need to setup the models. Just run the **setup_models.sh** script
 
 ```
-wget https://pjreddie.com/media/files/yolov3.weights
-wget https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3.cfg
+sh setup_models.sh
 ```
 
 
-Then, you can run the code with
+Then, you can run the program with:
 
 ```
-python DetectObject.py <image_or_video_path>
+python3 vep.py <image_or_video_path> <destination_file>
 ```
 
-<img src="https://i.ibb.co/fx42Pf7/Screenshot-from-2020-09-27-18-40-04.png" />
+If you want to run using the system camera as input feed, run:
 
-<img src="https://i.ibb.co/gwzwwZz/pic1.png" alt="pic1" border="0">
+```
+python3 vep.py camera <destination_file>
+```
 
-<img src="https://i.ibb.co/WtbbF8S/pic2.png" alt="pic2" border="0">
+
 
 
 
