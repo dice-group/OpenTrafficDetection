@@ -10,6 +10,9 @@ pip3 install python-magic
 pip3 install numpy
 ```
 
+Make sure that you have OpenCV properly installed. Please follow these steps:
+https://github.com/dice-group/VEP/wiki/Setup-OpenCV
+
 
 # Running the Application
 
