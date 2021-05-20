@@ -4,9 +4,10 @@ import detect as dt
 import image_utils as iu
 import magic
 import sys
+import time
 
 classesFile = "vep.names"
-wht = 512
+wht = 448
 confThreshold = 0.001
 nmsThreshold = 0.01
 
@@ -19,8 +20,8 @@ else:
 	mimetype = f.from_file(file)
 
 
-model_cfg = 'config/yolov4/yolov4-vep_512.cfg'
-model_w = 'config/yolov4/512/yolov4-vep_512_final.weights'
+model_cfg = 'config/yolov4/yolov4-vep_448.cfg'
+model_w = 'config/yolov4/448/yolov4-vep_448_best.weights'
 
 #model_cfg = 'config/yolov3/spp/yolov3-spp.cfg'
 #model_w = 'config/yolov3/spp/yolov3-spp.weights'
@@ -45,8 +46,10 @@ if 'image' in mimetype:
     blob = cv2.dnn.blobFromImage(img, 1 / 255, (wht, wht), [0, 0, 0], 1, crop=False)
     net.setInput(blob)
     outputs = net.forward(outputNames)
-    print(outputNames)
+    #print(outputNames)
+
     img = dt.findObjects(outputs, img, confThreshold, nmsThreshold, classNames)
+
     # out.write(img)
     while True:
         cv2.namedWindow("frame", cv2.WINDOW_AUTOSIZE)
@@ -88,7 +91,10 @@ else:
         blob = cv2.dnn.blobFromImage(img, 1 / 255, (wht, wht), [0, 0, 0], 1, crop=False)
         net.setInput(blob)
         outputs = net.forward(outputNames)
+        t1 = time.time()*1000
         img = dt.findObjects(outputs, img, confThreshold, nmsThreshold, classNames)
+        t2 = (1000 / ((time.time()*1000)-t1))
+        print("FPS: %.2f" % t2)
         cv2.imshow('frame', img)
         out.write(img)
         if cv2.waitKey(1) & 0xFF == ord('q'):
