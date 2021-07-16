@@ -1,7 +1,9 @@
 cd config/yolov4/
 wget https://hobbitdata.informatik.uni-leipzig.de/VEP/models/256.zip
 wget https://hobbitdata.informatik.uni-leipzig.de/VEP/models/416.zip
+wget https://hobbitdata.informatik.uni-leipzig.de/VEP/models/448.zip
 wget https://hobbitdata.informatik.uni-leipzig.de/VEP/models/512.zip
+wget https://hobbitdata.informatik.uni-leipzig.de/VEP/models/672.zip
 wget https://hobbitdata.informatik.uni-leipzig.de/VEP/models/832.zip
 wget https://hobbitdata.informatik.uni-leipzig.de/VEP/models/tiny.zip
 unzip 256.zip
