@@ -1,6 +1,7 @@
 import cv2
 
 import detect as dt
+import optical_flow as of
 import image_utils as iu
 import magic
 import sys
@@ -49,6 +50,7 @@ if 'image' in mimetype:
     #print(outputNames)
 
     img = dt.findObjects(outputs, img, confThreshold, nmsThreshold, classNames)
+     
 
     # out.write(img)
     while True:
@@ -60,7 +62,7 @@ if 'image' in mimetype:
 elif mimetype == 'camera':
 	print("Camera Detected")
 	cap = cv2.VideoCapture(0)
-
+	
 	while(True):
 	    # Capture frame-by-frame
 	    ret, frame = cap.read()
@@ -85,6 +87,9 @@ else:
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
     out = cv2.VideoWriter(outputFile, fourcc, 20.0, (1280,  720))
     fps = 25
+    ret, img = cap.read()
+    dof = of.OpticalFlow()
+    dof.computeFeaturesToTrack(img)
     while cap.isOpened():
         ret, img = cap.read()
         img = dt.resizeImage(img,100)
@@ -92,6 +97,7 @@ else:
         net.setInput(blob)
         outputs = net.forward(outputNames)
         t1 = time.time()*1000
+        img = dof.computeOpticalFlow(img)
         img = dt.findObjects(outputs, img, confThreshold, nmsThreshold, classNames)
         t2 = (1000 / ((time.time()*1000)-t1))
         print("FPS: %.2f" % t2)

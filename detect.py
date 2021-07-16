@@ -4,6 +4,24 @@ import numpy as np
 
 alpha = 0.7
 
+# params for ShiTomasi corner detection
+feature_params = dict( maxCorners = 100,
+                       qualityLevel = 0.3,
+                       minDistance = 7,
+                       blockSize = 7 )
+                       
+# Parameters for lucas kanade optical flow
+lk_params = dict( winSize  = (15,15),
+                  maxLevel = 2,
+                  criteria = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03))
+
+# Create some random colors
+color = np.random.randint(0,255,(100,3))
+
+frame_threshold = 0
+                  
+
+
 obj_colors = {
     0: (0,255,255), #person
     1: (255,0,0), # bicycle
@@ -91,6 +109,7 @@ def findObjects(outputs,img,confThreshold,nmsThreshold,classNames):
         i = i[0]
         box = bbox[i]
         x,y,w,h = box[0],box[1],box[2],box[3]
+        
 
         #if classIds[i] in frame_precision:
             #frame_precision[classIds[i]].append(confs[i] * 100)
