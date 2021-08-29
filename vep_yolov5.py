@@ -1,18 +1,12 @@
 import sys
 sys.path.insert(0, './yolov5')
 
-from yolov5.utils.google_utils import attempt_download
-from yolov5.models.experimental import attempt_load
-from yolov5.utils.datasets import LoadImages, LoadStreams
-from yolov5.utils.general import check_img_size, non_max_suppression, scale_coords, check_imshow, xyxy2xywh
-from yolov5.utils.torch_utils import select_device, time_synchronized
-from yolov5.utils.plots import plot_one_box
-from deep_sort_pytorch.utils.parser import get_config
-from deep_sort_pytorch.deep_sort import DeepSort
 import argparse
 import os
 import platform
 import shutil
+import image_utils as iu
+from PIL import Image, ImageEnhance
 import time
 from pathlib import Path
 import cv2
@@ -28,16 +22,16 @@ obj_colors = {
     5: (255,51,51) #bus
 }
 
-yolo_weights = 'yolov5/weights/yolov5s.pt'
 
-device = select_device('')
+
 
 # Model
-#model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
-model = attempt_load(yolo_weights, map_location=device)
+model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
 model.conf = 0.25
-model.classes = list(obj_colors.keys())
-stride = int(model.stride.max())
+#model = attempt_load(yolo_weights, map_location=device)
+#model.conf = 0.25
+#model.classes = list(obj_colors.keys())
+#stride = int(model.stride.max())
 fps_output = 25
 
 classesFile = "vep.names"
@@ -45,37 +39,38 @@ classesFile = "vep.names"
 file = 'video.mp4'
 outputFile = 'result1.mp4'
 
-
-cfg = get_config()
-cfg.merge_from_file('deep_sort_pytorch/configs/deep_sort.yaml')
-deepsort = DeepSort(cfg.DEEPSORT.REID_CKPT,
-                        max_dist=cfg.DEEPSORT.MAX_DIST, min_confidence=cfg.DEEPSORT.MIN_CONFIDENCE,
-                        nms_max_overlap=cfg.DEEPSORT.NMS_MAX_OVERLAP, max_iou_distance=cfg.DEEPSORT.MAX_IOU_DISTANCE,
-                        max_age=cfg.DEEPSORT.MAX_AGE, n_init=cfg.DEEPSORT.N_INIT, nn_budget=cfg.DEEPSORT.NN_BUDGET,
-                        use_cuda=True)
-
-
 print('Video Detected')
-cap = cv2.VideoCapture(file)
+#cap = cv2.VideoCapture(file)
+#print("Camera Detected")
+cap = cv2.VideoCapture(0)
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 out = cv2.VideoWriter(outputFile, fourcc, 25, (1280,  720))
 ret, img = cap.read()
+scale_percent = 35 # percent of original size
+width = int(img.shape[1] * scale_percent / 100)
+height = int(img.shape[0] * scale_percent / 100)
+dim = (width, height)
 
 detected = False
 
-while cap.isOpened():
+while (True):
     ret, frame = cap.read()
-    img = torch.from_numpy(frame).to(device)
+    	
+    frame = cv2.resize(frame, dim, interpolation = cv2.INTER_AREA)
+
+
+    frame = iu.adjust_gamma(frame,4.0)	
     t1 = time.time()*1000
-    pred = model(img,augment=True)
+    pred = model(frame,augment=True)
     results = pred.pandas().xyxy[0]
+	
     
     
     #bounding_box = cv2.selectROI('Multi-Object Tracker', frame, True,False)
     
-    #print(bounding_box)
-    #results = results[results['class'].isin(obj_colors)]
-    #print(results)
+#    print(bounding_box)
+    results = results[results['class'].isin(obj_colors)]
+    print(results)
     for index, row in results.iterrows():   
         
         #xywhs = row[:, 0:4]

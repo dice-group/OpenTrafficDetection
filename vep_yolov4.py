@@ -8,7 +8,7 @@ import sys
 import time
 
 classesFile = "vep.names"
-wht = 448
+wht = 256
 confThreshold = 0.001
 nmsThreshold = 0.01
 
@@ -21,8 +21,8 @@ else:
 	mimetype = f.from_file(file)
 
 
-model_cfg = 'config/yolov4/yolov4-vep_448.cfg'
-model_w = 'config/yolov4/448/yolov4-vep_448_best.weights'
+model_cfg = 'config/yolov4/yolov4-vep_256.cfg'
+model_w = 'config/yolov4/256/yolov4-vep_256_best.weights'
 
 #model_cfg = 'config/yolov3/spp/yolov3-spp.cfg'
 #model_w = 'config/yolov3/spp/yolov3-spp.weights'

@@ -74,7 +74,7 @@ deepsort = DeepSort(cfg.DEEPSORT.REID_CKPT,
 
 print('Video Detected')
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter(outputFile, fourcc, 25, (1280,  720))
+#out = cv2.VideoWriter(outputFile, fourcc, 25, (1280,  720))
 
 
 dataset = LoadImages(source, img_size=imgsz)
@@ -144,7 +144,7 @@ for frame_idx, (path, img, im0s, vid_cap) in enumerate(dataset):
             # Print time (inference + NMS)
             print('%sDone. (%.3fs)' % (s, t2 - t1))
             cv2.imshow(p, im0)
-            out.write(im0)
+            #out.write(im0)
             if cv2.waitKey(1) == ord('q'):  # q to quit
               out.release()  
               raise StopIteration
