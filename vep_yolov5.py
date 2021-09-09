@@ -40,9 +40,9 @@ file = 'video.mp4'
 outputFile = 'result1.mp4'
 
 print('Video Detected')
-#cap = cv2.VideoCapture(file)
+cap = cv2.VideoCapture(file)
 #print("Camera Detected")
-cap = cv2.VideoCapture(0)
+#cap = cv2.VideoCapture(0)
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 out = cv2.VideoWriter(outputFile, fourcc, 25, (1280,  720))
 ret, img = cap.read()
@@ -59,7 +59,7 @@ while (True):
     frame = cv2.resize(frame, dim, interpolation = cv2.INTER_AREA)
 
 
-    frame = iu.adjust_gamma(frame,4.0)	
+    #frame = iu.adjust_gamma(frame,4.0)	
     t1 = time.time()*1000
     pred = model(frame,augment=True)
     results = pred.pandas().xyxy[0]

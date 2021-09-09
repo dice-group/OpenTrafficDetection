@@ -6,14 +6,23 @@ import image_utils as iu
 import magic
 import sys
 import time
+import argparse
 
 classesFile = "vep.names"
-wht = 256
+wht = 448
 confThreshold = 0.001
 nmsThreshold = 0.01
 
-file = sys.argv[1]
-outputFile = sys.argv[2]
+parser = argparse.ArgumentParser()
+parser.add_argument('--source', type=str, default='0', help='source')
+parser.add_argument('--output', type=str, default='result.mp4', help='output')
+
+
+
+args = parser.parse_args()
+
+file = args.source
+outputFile = args.output
 f = magic.Magic(mime=True, uncompress=True)
 if file == 'camera':
 	mimetype = 'camera'
@@ -21,8 +30,8 @@ else:
 	mimetype = f.from_file(file)
 
 
-model_cfg = 'config/yolov4/yolov4-vep_256.cfg'
-model_w = 'config/yolov4/256/yolov4-vep_256_best.weights'
+model_cfg = 'config/yolov4/yolov4-vep_448.cfg'
+model_w = 'config/yolov4/448/yolov4-vep_448_best.weights'
 
 #model_cfg = 'config/yolov3/spp/yolov3-spp.cfg'
 #model_w = 'config/yolov3/spp/yolov3-spp.weights'
@@ -88,16 +97,13 @@ else:
     out = cv2.VideoWriter(outputFile, fourcc, 20.0, (1280,  720))
     fps = 25
     ret, img = cap.read()
-    dof = of.OpticalFlow()
-    dof.computeFeaturesToTrack(img)
     while cap.isOpened():
         ret, img = cap.read()
+        t1 = time.time()*1000
         img = dt.resizeImage(img,100)
         blob = cv2.dnn.blobFromImage(img, 1 / 255, (wht, wht), [0, 0, 0], 1, crop=False)
         net.setInput(blob)
         outputs = net.forward(outputNames)
-        t1 = time.time()*1000
-        img = dof.computeOpticalFlow(img)
         img = dt.findObjects(outputs, img, confThreshold, nmsThreshold, classNames)
         t2 = (1000 / ((time.time()*1000)-t1))
         print("FPS: %.2f" % t2)
