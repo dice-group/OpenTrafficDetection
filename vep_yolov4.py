@@ -14,7 +14,7 @@ confThreshold = 0.001
 nmsThreshold = 0.01
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--source', type=str, default='0', help='source')
+parser.add_argument('--source', type=str, default='camera', help='source')
 parser.add_argument('--output', type=str, default='result.mp4', help='output')
 
 
