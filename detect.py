@@ -116,10 +116,11 @@ def findObjects(outputs,img,confThreshold,nmsThreshold,classNames):
             #overall_precision[classIds[i]].append(confs[i] * 100)
 
         if classIds[i] in obj_colors:
-            cv2.rectangle(img,(x,y),(x+w,y+h),obj_colors[classIds[i]],-1)
+            cv2.rectangle(img,(x,y),(x+w,y+h),obj_colors[classIds[i]],2)
         else:
-            cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,255),-1)
-    output = cv2.addWeighted(overlay, alpha, img, 1 - alpha, 0)
+            cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,255),2)
+    output=img        
+    #output = cv2.addWeighted(overlay, alpha, img, 1 - alpha, 0)
     #Macro Recall
     #printFramePrecision(output,classNames)
 
