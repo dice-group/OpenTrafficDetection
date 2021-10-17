@@ -16,25 +16,26 @@ import torch.backends.cudnn as cudnn
 
 obj_colors = {
     0: (0,255,255), #person
-    #1: (255,0,0), # bicycle
+    1: (255,0,0), # bicycle
     2: (0,255,0), # car
-    #3: (6,140,201), #motorbike
-    5: (255,51,51) #bus
+    3: (6,140,201), #motorbike
+    4: (255,51,51), #bus
+    5: (0,0,255) #truck
 }
 
 
 
 
 # Model
-model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
-model.conf = 0.25
+#model = torch.hub.load('ultralytics/yolov5', 'yolov5_vep')
+model = torch.hub.load('yolov5_config/', 'custom', path='yolov5_config/weights/yolov5_vep.pt', source='local') 
+model.conf = 0.5
 #model = attempt_load(yolo_weights, map_location=device)
 #model.conf = 0.25
 #model.classes = list(obj_colors.keys())
 #stride = int(model.stride.max())
 fps_output = 25
 
-classesFile = "vep.names"
 
 file = 'video.mp4'
 outputFile = 'result1.mp4'
@@ -56,9 +57,7 @@ detected = False
 while (True):
     ret, frame = cap.read()
     	
-    frame = cv2.resize(frame, dim, interpolation = cv2.INTER_AREA)
-
-
+    #frame = cv2.resize(frame, dim, interpolation = cv2.INTER_AREA)
     #frame = iu.adjust_gamma(frame,4.0)	
     t1 = time.time()*1000
     pred = model(frame,augment=True)
@@ -94,6 +93,7 @@ while (True):
         
     
     cv2.imshow('frame',frame)
+    out.write(frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
             cap.release()
             cv2.destroyAllWindows()
