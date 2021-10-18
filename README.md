@@ -6,44 +6,18 @@ Implementation in Python
 Before run, install the dependencies with
 
 ```
-pip3 install python-magic
-pip3 install numpy
+pip3 install -r requirements.txt
 ```
-
-Make sure that you have OpenCV properly installed. Please follow these steps:
-https://github.com/dice-group/VEP/wiki/Setup-OpenCV
-
 
 # Running the Application
 
-To run, clone the repository and access the python folder
+To run, clone the repository recursively:
 
 
 ```
-git clone https://github.com/dice-group/VEP
-cd python
+git clone --recurse-submodules https://github.com/dice-group/VEP
 ```
-
-Now, you need to setup the models. Just run the **setup_models.sh** script
-
-```
-sh setup_models.sh
-```
-
-
-Then, you can run the program with:
-
-```
-python3 vep.py <image_or_video_path> <destination_file>
-```
-
-If you want to run using the system camera as input feed, run:
-
-```
-python3 vep.py camera <destination_file>
-```
-
-
+If you already cloned and forgot to use ```--recurse-submodules``` you can run ```git submodule update --init```
 
 
 
