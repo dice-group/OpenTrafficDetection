@@ -5,7 +5,6 @@ import argparse
 import os
 import platform
 import shutil
-import image_utils as iu
 from PIL import Image, ImageEnhance
 import time
 from pathlib import Path
