@@ -12,6 +12,7 @@ from pathlib import Path
 import cv2
 import torch
 import torch.backends.cudnn as cudnn
+import argparse
 
 
 obj_colors = {
@@ -23,7 +24,11 @@ obj_colors = {
     5: (0,0,255) #truck
 }
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--source', type=str, default='camera', help='source')
+parser.add_argument('--output', type=str, default='result.mp4', help='output')
 
+args = parser.parse_args()
 
 
 # Model
@@ -34,25 +39,22 @@ model.conf = 0.5
 #model.conf = 0.25
 #model.classes = list(obj_colors.keys())
 #stride = int(model.stride.max())
-fps_output = 25
+fps_output = 30
+file = args.source
 
 
-file = 'video.mp4'
-outputFile = 'result1.mp4'
 
-print('Video Detected')
 cap = cv2.VideoCapture(file)
 #print("Camera Detected")
 #cap = cv2.VideoCapture(0)
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter(outputFile, fourcc, 25, (1280,  720))
+out = cv2.VideoWriter(args.output, fourcc, 25, (1280,  720))
 ret, img = cap.read()
 scale_percent = 35 # percent of original size
 width = int(img.shape[1] * scale_percent / 100)
 height = int(img.shape[0] * scale_percent / 100)
 dim = (width, height)
 
-detected = False
 
 while (True):
     ret, frame = cap.read()
