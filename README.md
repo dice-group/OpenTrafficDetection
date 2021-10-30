@@ -54,13 +54,18 @@ When it is over, you can find the result in runs/train.
 
 For more detailed results, please check results/results.csv
 
+# F1 Curve
 ![alt text](https://github.com/dice-group/VEP/blob/master/results/F1_curve.png)
 
+# Precision-Recall Curve
 ![alt text](https://github.com/dice-group/VEP/blob/master/results/PR_curve.png)
 
+# Precision Curve
 ![alt text](https://github.com/dice-group/VEP/blob/master/results/P_curve.png)
 
+# Recall Curve
 ![alt text](https://github.com/dice-group/VEP/blob/master/results/R_curve.png)
 
+# Confusion Matrix
 ![alt text](https://github.com/dice-group/VEP/blob/master/results/confusion_matrix.png)
 
