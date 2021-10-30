@@ -36,7 +36,8 @@ cd yolov5
 pip install -r requirements.txt
 ```
 
-extract the # vep.tar.gz file into the yolov5 folder and copy training/vep_l.yaml to yolov5/models.
+
+Extract the vep.tar.gz file into the yolov5 folder and copy training/vep_l.yaml to yolov5/models.
 
 Make sure that you have CUDA and CUDNN installed
 
@@ -47,8 +48,8 @@ python3 train.py --img 448 --batch 16 --epochs 300 --data vep/vep.yaml --cfg mod
 
 The device is the index of the GPU that you want to train. Switch to the fastest GPU available on your system.
 If the GPU does not have enough memory, reduce the number of batches until you find one that fits the GPU memory.
-When it is over, you can find the result in # runs/train.
+When it is over, you can find the result in runs/train.
 
 # VEP Training Results
-
+![alt text](https://github.com/dice-group/VEP/blob/master/results/F1_curve.png)
 
