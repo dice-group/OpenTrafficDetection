@@ -51,5 +51,16 @@ If the GPU does not have enough memory, reduce the number of batches until you f
 When it is over, you can find the result in runs/train.
 
 # VEP Training Results
+
+For more detailed results, please check results/results.csv
+
 ![alt text](https://github.com/dice-group/VEP/blob/master/results/F1_curve.png)
+
+![alt text](https://github.com/dice-group/VEP/blob/master/results/PR_curve.png)
+
+![alt text](https://github.com/dice-group/VEP/blob/master/results/P_curve.png)
+
+![alt text](https://github.com/dice-group/VEP/blob/master/results/R_curve.png)
+
+![alt text](https://github.com/dice-group/VEP/blob/master/results/confusion_matrix.png)
 
