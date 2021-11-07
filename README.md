@@ -3,7 +3,14 @@
 # Traffic Detection
 Implementation in Python
 
-Before run, install the dependencies with
+Before run in the jetson board
+
+check the wiki about how to install the SDK with:
+https://github.com/dice-group/VEP/wiki/Configuring-the-Project-on-the-Jetson-TX2-Board
+
+and install openCV for the jetson by executing install_opencv_jetson_tx2.sh
+
+then, install the dependencies with
 
 ```
 pip3 install -r requirements.txt
@@ -20,6 +27,8 @@ sudo apt-get install python3-pip libopenblas-base libopenmpi-dev
 pip3 install Cython
 pip3 install numpy torch-1.8.0-cp36-cp36m-linux_aarch64.whl
 ```
+
+
 
 # Running the Application
 
