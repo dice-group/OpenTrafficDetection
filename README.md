@@ -9,6 +9,18 @@ Before run, install the dependencies with
 pip3 install -r requirements.txt
 ```
 
+If you are instaling on Nvidia Jetson, please comment the pytorch dependency on the requirements file and install the version 1.8.0 following the instructions:
+https://forums.developer.nvidia.com/t/pytorch-for-jetson-version-1-10-now-available/72048
+
+or:
+
+```
+wget https://nvidia.box.com/shared/static/p57jwntv436lfrd78inwl7iml6p13fzh.whl -O torch-1.8.0-cp36-cp36m-linux_aarch64.whl
+sudo apt-get install python3-pip libopenblas-base libopenmpi-dev 
+pip3 install Cython
+pip3 install numpy torch-1.8.0-cp36-cp36m-linux_aarch64.whl
+```
+
 # Running the Application
 
 To run, clone the repository recursively:
