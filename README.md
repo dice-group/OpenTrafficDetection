@@ -26,6 +26,11 @@ wget https://nvidia.box.com/shared/static/p57jwntv436lfrd78inwl7iml6p13fzh.whl -
 sudo apt-get install python3-pip libopenblas-base libopenmpi-dev 
 pip3 install Cython
 pip3 install numpy torch-1.8.0-cp36-cp36m-linux_aarch64.whl
+
+sudo -H pip3 install gdown
+# download TorchVision 0.8.2
+gdown https://drive.google.com/uc?id=1Z14mNdwgnElOb_NYkRaDCwP31scd7Mfz
+sudo -H pip3 install torchvision-0.8.2a0+2f40a48-cp36-cp36m-linux_aarch64.whl
 ```
 
 
@@ -55,6 +60,7 @@ and checkout the yolov5 repository and install the dependencies:
 git clone https://github.com/ultralytics/yolov5
 cd yolov5
 pip install -r requirements.txt
+
 ```
 
 
