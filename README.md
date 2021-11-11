@@ -64,7 +64,7 @@ Make sure that you have CUDA and CUDNN installed
 
 inside the yolov5 folder, train the model with:
 ```
-python3 train.py --img 448 --batch 16 --epochs 300 --data vep/vep.yaml --cfg models/vep_l.yaml --device 0
+python3 train.py --img 448 --batch 224 --epochs 500 --data vep/vep.yaml --cfg models/vep_s.yaml --device 0
 ```
 
 The device is the index of the GPU that you want to train. Switch to the fastest GPU available on your system.
