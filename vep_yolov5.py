@@ -32,7 +32,7 @@ args = parser.parse_args()
 
 # Model
 #model = torch.hub.load('ultralytics/yolov5', 'yolov5_vep')
-model = torch.hub.load('yolov5_config/', 'custom', path='yolov5_config/weights/yolov5_vep.pt', source='local') 
+model = torch.hub.load('yolov5_config/', 'custom', path='yolov5_config/weights/best.pt', source='local') 
 model.conf = 0.5
 #model = attempt_load(yolo_weights, map_location=device)
 #model.conf = 0.25
