@@ -49,13 +49,11 @@ $ sudo -H pip3 install torchvision-0.11.0a0+fa347eb-cp36-cp36m-linux_aarch64.whl
 $ rm torchvision-0.11.0a0+fa347eb-cp36-cp36m-linux_aarch64.whl
 ```
 
+and finally, install the requirements with:
+
 ```
 pip3 install -r requirements.txt
 ```
-
-If you are instaling on Nvidia Jetson, please comment the pytorch dependency on the requirements file and install the version 1.8.0 following the instructions:
-https://forums.developer.nvidia.com/t/pytorch-for-jetson-version-1-10-now-available/72048
-
 
 
 
