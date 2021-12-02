@@ -3,6 +3,15 @@
 # Traffic Detection
 Implementation in Python
 
+# Cloning the repository
+Clone the repo with:
+```
+git clone --recurse-submodules https://github.com/dice-group/VEP
+```
+If you already cloned and forgot to use ```--recurse-submodules``` you can run ```git submodule update --init```
+
+# Configuring
+
 Before run in the jetson board
 
 check the wiki about how to install the SDK with:
@@ -55,20 +64,20 @@ and finally, install the requirements with:
 pip3 install -r requirements.txt
 ```
 
-
-
 # Running the Application
 
-To run, clone the repository recursively:
-
-
+To run with a video, use the command, replacing video.mp4 by your video file
 ```
-git clone --recurse-submodules https://github.com/dice-group/VEP
+python3 vep_yolov5.py --source video.mp4
 ```
-If you already cloned and forgot to use ```--recurse-submodules``` you can run ```git submodule update --init```
+
+To run with a camera installed, run :
+```
+python3 vep_yolov5.py --source camera.mp4
+```
 
 
-# Training VEP
+# Training VEP Model
 
 Download the VEP Dataset from:
 
