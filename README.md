@@ -10,7 +10,44 @@ https://github.com/dice-group/VEP/wiki/Configuring-the-Project-on-the-Jetson-TX2
 
 and install openCV for the jetson by executing install_opencv_jetson_tx2.sh
 
-then, install the dependencies with
+then, install PyTorch and Torch Vision for ARM CPUs:
+
+PyTorch:
+```
+# install the dependencies (if not already onboard)
+$ sudo apt-get install python3-pip libjpeg-dev libopenblas-dev libopenmpi-dev libomp-dev
+$ sudo -H pip3 install future
+$ sudo pip3 install -U --user wheel mock pillow
+$ sudo -H pip3 install testresources
+# upgrade setuptools 47.1.1 -> 58.3.0
+$ sudo -H pip3 install --upgrade setuptools
+$ sudo -H pip3 install Cython
+# install gdown to download from Google drive
+$ sudo -H pip3 install gdown
+# download the wheel
+$ gdown https://drive.google.com/uc?id=1TqC6_2cwqiYacjoLhLgrZoap6-sVL2sd
+# install PyTorch 1.10.0
+$ sudo -H pip3 install torch-1.10.0a0+git36449ea-cp36-cp36m-linux_aarch64.whl
+# clean up
+$ rm torch-1.10.0a0+git36449ea-cp36-cp36m-linux_aarch64.whl
+```
+
+TorchVision:
+```
+Used with PyTorch 1.10.0
+# the dependencies
+$ sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev
+$ sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev
+$ sudo pip3 install -U pillow
+# install gdown to download from Google drive, if not done yet
+$ sudo -H pip3 install gdown
+# download TorchVision 0.11.0
+$ gdown https://drive.google.com/uc?id=1C7y6VSIBkmL2RQnVy8xF9cAnrrpJiJ-K
+# install TorchVision 0.11.0
+$ sudo -H pip3 install torchvision-0.11.0a0+fa347eb-cp36-cp36m-linux_aarch64.whl
+# clean up
+$ rm torchvision-0.11.0a0+fa347eb-cp36-cp36m-linux_aarch64.whl
+```
 
 ```
 pip3 install -r requirements.txt
@@ -19,19 +56,6 @@ pip3 install -r requirements.txt
 If you are instaling on Nvidia Jetson, please comment the pytorch dependency on the requirements file and install the version 1.8.0 following the instructions:
 https://forums.developer.nvidia.com/t/pytorch-for-jetson-version-1-10-now-available/72048
 
-or:
-
-```
-wget https://nvidia.box.com/shared/static/p57jwntv436lfrd78inwl7iml6p13fzh.whl -O torch-1.8.0-cp36-cp36m-linux_aarch64.whl
-sudo apt-get install python3-pip libopenblas-base libopenmpi-dev 
-pip3 install Cython
-pip3 install numpy torch-1.8.0-cp36-cp36m-linux_aarch64.whl
-
-sudo -H pip3 install gdown
-# download TorchVision 0.8.2
-gdown https://drive.google.com/uc?id=1Z14mNdwgnElOb_NYkRaDCwP31scd7Mfz
-sudo -H pip3 install torchvision-0.8.2a0+2f40a48-cp36-cp36m-linux_aarch64.whl
-```
 
 
 
