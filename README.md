@@ -73,8 +73,19 @@ python3 vep_yolov5.py --source video.mp4
 
 To run with a camera installed, run :
 ```
-python3 vep_yolov5.py --source camera.mp4
+python3 vep_yolov5.py --source camera
 ```
+
+By default, the detections will be saved to `output_detection.txt`. To change the filename, use `--output <file_name.txt>`.
+
+# Remote Server
+You can send the detections to a remote server. Start the server with
+```
+python3 detections_server.py
+```
+Then run VEP with the command `--remote_server=<ip_address>:5005`
+
+Always use the port 5005. It is the port that the server will listen. The machine host name, the timestamp and the detections will be sent in the message
 
 
 # Training VEP Model
