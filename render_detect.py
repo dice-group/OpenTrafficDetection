@@ -74,7 +74,7 @@ def detectForVideo(file, model,output,ip_address,port):
             f.write('\n')
         
         if(isip == True):
-            sock.sendto(message.encode(), (ip_address, int(port)))
+            sock.sendto((socket.gethostname()+ "|" + message).encode(), (ip_address, int(port)))
         
         for (index, row) in results.iterrows():
 
