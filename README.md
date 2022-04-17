@@ -106,7 +106,7 @@ pip install -r requirements.txt
 ```
 
 
-Extract the vep.tar.gz file into the yolov5 folder and copy training/vep_l.yaml to yolov5/models.
+Extract the vep.tar.gz file into the yolov5 folder and copy training/vep_s.yaml to yolov5/models.
 
 Make sure that you have CUDA and CUDNN installed
 

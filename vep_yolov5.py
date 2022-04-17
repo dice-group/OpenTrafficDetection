@@ -26,12 +26,12 @@ model = torch.hub.load('yolov5_config/', 'custom', path='yolov5_config/weights/b
 model.conf = 0.5
 file = args.source
 
-if(args.remote_server != None):
+if args.remote_server is not None :
 	ip,port = args.remote_server.split(":")
 else:
-	ip,port = ''
+	ip,port = None,None
 
-if(file == 'camera'):
+if file == 'camera':
 	detectForVideo('camera',model,args.output,ip,port)
 else:
 	detectForVideo(file, model,args.output,ip,port)
